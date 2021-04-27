@@ -65,7 +65,7 @@ commands:
       - run: git config --global core.autocrlf false
       - checkout
       - restore_dependency_cache:
-          base-cache-path: << pipeline.parameters.cache-version >>-tmp
+          base-cache-path: << pipeline.parameters.cache-version >>-win
       - run:
           name: 'Install node'
           shell: bash.exe
@@ -296,8 +296,8 @@ jobs:
       - build-artifacts
 
   unit-tests:
-    description: 'Run tests'
-    executor: default-executor
+    description: 'Run tests on Windows'
+    executor: win/default
     environment:
       - SFDX_AUTOUPDATE_DISABLE: true
       - SFDX_DOMAIN_RETRY: << pipeline.parameters.domain-retry >>
@@ -335,7 +335,7 @@ jobs:
 
   soql-ui-tests:
     description: 'Run E2E SOQL UI Tests'
-    executor: default-executor
+    executor: win/default
     environment:
       - SFDX_AUTOUPDATE_DISABLE: true
       - SFDX_DOMAIN_RETRY: << pipeline.parameters.domain-retry >>
@@ -348,8 +348,8 @@ jobs:
           command: npm run test:ui
 
   integration-tests:
-    description: 'Run tests'
-    executor: default-executor
+    description: 'Run tests on Windows'
+    executor: win/default
     environment:
       - SFDX_AUTOUPDATE_DISABLE: true
       - SFDX_DOMAIN_RETRY: << pipeline.parameters.domain-retry >>
