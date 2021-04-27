@@ -296,8 +296,8 @@ jobs:
       - build-artifacts
 
   unit-tests:
-    description: 'Run tests on Windows'
-    executor: win/default
+    description: 'Run tests'
+    # executor: win/default
     environment:
       - SFDX_AUTOUPDATE_DISABLE: true
       - SFDX_DOMAIN_RETRY: << pipeline.parameters.domain-retry >>
@@ -335,7 +335,7 @@ jobs:
 
   soql-ui-tests:
     description: 'Run E2E SOQL UI Tests'
-    executor: win/default
+    # executor: win/default
     environment:
       - SFDX_AUTOUPDATE_DISABLE: true
       - SFDX_DOMAIN_RETRY: << pipeline.parameters.domain-retry >>
@@ -348,8 +348,8 @@ jobs:
           command: npm run test:ui
 
   integration-tests:
-    description: 'Run tests on Windows'
-    executor: win/default
+    description: 'Run tests'
+    # executor: win/default
     environment:
       - SFDX_AUTOUPDATE_DISABLE: true
       - SFDX_DOMAIN_RETRY: << pipeline.parameters.domain-retry >>
